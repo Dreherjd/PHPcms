@@ -2,8 +2,8 @@
 
 session_start();
 
-include_once('../includes/connection.php');
-include_once('../includes/review.php');
+include('../common/connection.php');
+include('../controllers/review.php');
 
 $review = new Review;
 
@@ -18,18 +18,13 @@ if (isset($_SESSION['logged_in'])){
         header('location: delete.php');
     }
 
-    $reviews = $review->fetch_all();
+    $reviews = $review->getAllReviews();
 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>PHP web lab</title>
-	<link rel="stylesheet" type="text/css" href="../assets/style.css">
-</head>
-<body>
-<div class="container">
-	<a href="index.php" id="logo">Vacation Spots</a>
+<?php include '../includes/header.php'; ?>
+<style>
+    <?php include '../assets/style.css'; ?>
+</style>
 
 	<br /><br />
     <h4>Select and article to delete:</h4>
@@ -42,11 +37,7 @@ if (isset($_SESSION['logged_in'])){
     </form>
 
 </div>
-
-
-
-</body>
-</html>
+<?php include '../includes/footer.php'; ?>
 <?php
 }else{
 	header('locationL index.php');

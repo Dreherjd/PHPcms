@@ -1,37 +1,27 @@
 <?php
-include_once('includes/connection.php');
-include_once('includes/review.php');
+include_once('common/connection.php');
+include_once('controllers/review.php');
 
 $review = new Review;
-$reviews = $review->fetch_all();
-
+$reviews = $review->getAllReviews();
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>PHP web lab</title>
-	<link rel="stylesheet" type="text/css" href="assets/style.css">
-</head>
-<body>
-<div class="container">
-	<a href="index.php" id="logo">Vacation Spots</a>
+<?php include 'includes/header.php' ?>
+<style>
+	<?php include 'assets/style.css';?>
+</style>
 
 	<ol>
-		<?php foreach ($reviews as $review) { ?>
-			<li><a href="review.php?id=<?php echo $review['review_id'];?>">
-				<?php echo $review['review_title']; ?>
-				</a>
-			</li>
-		<?php } ?>
+		<?php foreach ($reviews as $review): ?>
+			<a href="review.php?id=<?php echo $review['review_id'];?>">
+			<div class="callout primary">
+				<h5><?php echo $review['review_title']; ?></h5>
+				<p><?php echo $review['review_content']; ?></p>
+			</div>
+		</a>
+		<?php endforeach; ?>
 	</ol>
 
 	<br />
 
-	<small><a href="admin">Admin</a></small>
-</div>
-
-
-
-</body>
-</html>
+	
+<?php include 'includes/footer.php' ?>

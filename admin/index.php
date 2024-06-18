@@ -2,21 +2,16 @@
 
 session_start();
 
-include_once('../includes/connection.php');
+include_once('../common/connection.php');
 
 if(isset($_SESSION['logged_in'])){
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>PHP web lab</title>
-	<link rel="stylesheet" type="text/css" href="../assets/style.css">
-</head>
-<body>
-<div class="container">
-	<a href="index.php" id="logo">Vacation Spots</a>
+<?php include '../includes/header.php' ?>
+<style>
+	<?php include '../assets/style.css'; ?>
+</style>
 
 	<br />
 		<ol>
@@ -25,13 +20,7 @@ if(isset($_SESSION['logged_in'])){
 			<li><a href="logout.php">Logout</a></li>
 		</ol>
 
-</div>
-
-
-
-</body>
-</html>
-
+<?php include '../includes/footer.php' ?>
 
 
 
@@ -67,15 +56,10 @@ if(isset($_SESSION['logged_in'])){
 	}
 	?>
 
-	<!DOCTYPE html>
-<html>
-<head>
-	<title>PHP web lab</title>
-	<link rel="stylesheet" type="text/css" href="../assets/style.css">
-</head>
-<body>
-<div class="container">
-	<a href="index.php" id="logo">Vacation Spots</a>
+<?php include '../includes/header.php' ?>
+<style>
+	<?php include '../assets/style.css'; ?>
+</style>
 
 	<br /><br />
 
@@ -86,18 +70,13 @@ if(isset($_SESSION['logged_in'])){
 
 	<form action="index.php" method="post" autocomplete="off">
 		<input type="text" name="username" placeholder="Username" />
-		<input type="text" name="password" placeholder="Password" />
-		<input type="submit" value="Login" />
+		<input type="password" name="password" placeholder="Password" />
+		<a class="button primary" href="index.php">Back</a>
+		<input type="submit" class="button primary" value="Login" />
 	</form>
 	<br />
-	<a href="../index.php">&larr; back</a>
 
-</div>
-
-
-
-</body>
-</html>
+<?php include '../includes/footer.php' ?>
 
 	<?php
 
